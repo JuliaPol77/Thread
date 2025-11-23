@@ -1,7 +1,6 @@
-# Используем Node.js LTS
 FROM node:20-bullseye
 
-# Устанавливаем системные библиотеки для Puppeteer
+# Системные библиотеки для Puppeteer/Chromium
 RUN apt-get update && apt-get install -y \
     ca-certificates \
     fonts-liberation \
@@ -46,20 +45,15 @@ RUN apt-get update && apt-get install -y \
     xvfb \
     --no-install-recommends && rm -rf /var/lib/apt/lists/*
 
-# Создаем рабочую директорию
 WORKDIR /usr/src/app
 
-# Копируем package.json и package-lock.json
+# Копируем package.json
 COPY package*.json ./
 
-# Устанавливаем Node.js зависимости
 RUN npm install
 
-# Копируем весь проект
 COPY . .
 
-# Экспонируем порт
 EXPOSE 3000
 
-# Команда запуска
 CMD ["npm", "start"]
