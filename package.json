@@ -1,13 +1,13 @@
 {
   "name": "threads-scraper",
   "version": "1.0.0",
+  "description": "Fetch Threads posts by keyword",
   "main": "index.js",
-  "type": "module",
   "scripts": {
     "start": "node index.js"
   },
   "dependencies": {
     "express": "^4.18.2",
-    "puppeteer": "^21.3.0"
+    "puppeteer": "^21.3.8"
   }
 }
